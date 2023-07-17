@@ -15,6 +15,7 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
   //insert a data
  
   res.send("Server Running");
+  // from new branch
   // next()
 });
 
