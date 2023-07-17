@@ -1,3 +1,7 @@
 {
-  "cSpell.words": ["Parens", "Pewds", "tsbuildinfo"]
+  "cSpell.words": ["Parens", "Pewds", "tsbuildinfo"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  }
 }
