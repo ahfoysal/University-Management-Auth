@@ -1,7 +1,7 @@
 import cors from 'cors'
-import express, { Application, Request, Response } from 'express'
+import express, { Application, NextFunction, Request, Response } from 'express'
 import globalErrorHandler from './app/middlewares/globalErrorHandlers'
-import userRouter from './app/modules/users/user.route'
+import { userRoutes } from './app/modules/users/user.route'
 
 const app: Application = express()
 
@@ -12,14 +12,16 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 ////////
-app.use('/api/v1/users', userRouter)
+app.use('/api/v1/users', userRoutes)
+app.use(globalErrorHandler)
+
 ///////
 
-app.get('/', async (req: Request, res: Response) => {
-  // throw new ApiError(400, 'heda')
-  // next('ore heda')
-  return res.send('Server Running')
+// Testing
+app.get('/', async (req: Request, res: Response, next: NextFunction) => {
+  // throw new ApiError(400, 'Invalid Request')
+  Promise.reject(new Error('Unhandled Promise Rejection'))
+  // return res.send('Server Running')
 })
 
-app.use(globalErrorHandler)
 export default app
