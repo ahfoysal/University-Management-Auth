@@ -2,12 +2,13 @@ import { ErrorRequestHandler } from 'express'
 import { ZodError } from 'zod'
 import config from '../../config'
 import ApiError from '../../errors/ApiError'
+import handleCastError from '../../errors/handleCastError'
 import handleValidationError from '../../errors/handleValidationError'
 import handleZodError from '../../errors/handleZodError'
 import { IGenericErrorMessage } from '../../interfaces/error'
 import { errorLogger } from '../../shared/logger'
-import handleCastError from '../../errors/handleCastError'
 
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   // eslint-disable-next-line no-unused-expressions
   config.env === 'development'
@@ -62,6 +63,5 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     errorMessages,
     stack: config.env !== 'production' ? err.stack : undefined,
   })
-  next()
 }
 export default globalErrorHandler

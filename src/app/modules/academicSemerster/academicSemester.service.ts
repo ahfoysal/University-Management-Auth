@@ -25,7 +25,7 @@ const createSemester = async (
 }
 
 const getSemesters = async (
-  filters: IAcademicSemesterFilters,
+  filters: Partial<IAcademicSemesterFilters>,
   pagination: IPaginationOptions,
 ): Promise<IGenericResponse<IAcademicSemester[]>> => {
   const { searchTerm, ...filterData } = filters
@@ -76,8 +76,31 @@ const getSingleSemester = async (
   const result = await AcademicSemester.findById(id)
   return result
 }
+const updateSemester = async (
+  id: string,
+  payload: Partial<IAcademicSemester>,
+): Promise<IAcademicSemester | null> => {
+  const result = await AcademicSemester.findByIdAndUpdate(
+    { _id: id },
+    payload,
+    { new: true },
+  )
+  if (
+    payload.title &&
+    payload.code &&
+    academicSemesterTitleCodeMapper[payload.title] !== payload.code
+  ) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Semester Code')
+  }
+  return result
+}
+const deleteSemester = async (id: string): Promise<void> => {
+  await AcademicSemester.deleteOne({ _id: id })
+}
 export const academicSemesterService = {
   createSemester,
   getSemesters,
   getSingleSemester,
+  updateSemester,
+  deleteSemester,
 }

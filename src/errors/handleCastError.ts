@@ -1,23 +1,21 @@
 import mongoose from 'mongoose'
+import { IGenericErrorMessage } from '../interfaces/error'
 import { IGenericErrorResponse } from '../interfaces/common'
 
 const handleCastError = (
   err: mongoose.Error.CastError,
 ): IGenericErrorResponse => {
-  //   const errors: IGenericErrorMessage[] = Object.values(err.errors).map(
-  //     (el: mongoose.Error.ValidatorError | mongoose.Error.CastError) => {
-  //       return {
-  //         path: el?.path,
-  //         message: el?.message,
-  //       }
-  //     },
-  //   )
-  const statusCode = 400
-  console.log(err, 'error')
+  const errors: IGenericErrorMessage[] = [
+    {
+      path: err?.path,
+      message: 'Invalid Id',
+    },
+  ]
+
   return {
-    statusCode,
-    message: 'cast Error',
-    errorMessages: [{ message: 'cast error', path: '' }],
+    statusCode: 400,
+    message: 'Cast Error',
+    errorMessages: errors,
   }
 }
 
