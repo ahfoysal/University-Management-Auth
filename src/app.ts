@@ -1,7 +1,8 @@
 import cors from 'cors'
 import express, { Application, NextFunction, Request, Response } from 'express'
 import globalErrorHandler from './app/middlewares/globalErrorHandlers'
-import { userRoutes } from './app/modules/users/user.route'
+import { userRoutes } from './app/modules/user/user.route'
+import ApiError from './errors/ApiError'
 
 const app: Application = express()
 
@@ -19,8 +20,8 @@ app.use(globalErrorHandler)
 
 // Testing
 app.get('/', async (req: Request, res: Response, next: NextFunction) => {
-  // throw new ApiError(400, 'Invalid Request')
-  Promise.reject(new Error('Unhandled Promise Rejection'))
+  throw new ApiError(400, 'Invalid Request')
+  // Promise.reject(new Error('Unhandled Promise Rejection'))
   // return res.send('Server Running')
 })
 
