@@ -1,8 +1,17 @@
 import httpStatus from 'http-status'
+import { SortOrder } from 'mongoose'
 import ApiError from '../../../errors/ApiError'
+import { paginationHelper } from '../../../helpers/paginationHelper'
+import { IGenericResponse } from '../../../interfaces/common'
 import { IPaginationOptions } from '../../../interfaces/pagination'
-import { academicSemesterTitleCodeMapper } from './academicSemester.constant'
-import { IAcademicSemester } from './academicSemester.interface'
+import {
+  academicSemesterSearchableFields,
+  academicSemesterTitleCodeMapper,
+} from './academicSemester.constant'
+import {
+  IAcademicSemester,
+  IAcademicSemesterFilters,
+} from './academicSemester.interface'
 import { AcademicSemester } from './academicSemester.model'
 
 const createSemester = async (
@@ -15,10 +24,42 @@ const createSemester = async (
   return result
 }
 
-const getSemesters = async (pagination: IPaginationOptions) => {
-  const { page = 1, limit = 10 } = pagination
-  const skip = (page - 1) * limit
-  const result = await AcademicSemester.find().sort().skip(skip).limit(limit)
+const getSemesters = async (
+  filters: IAcademicSemesterFilters,
+  pagination: IPaginationOptions,
+): Promise<IGenericResponse<IAcademicSemester[]>> => {
+  const { searchTerm, ...filterData } = filters
+  const andCondition = []
+  if (searchTerm) {
+    andCondition.push({
+      $or: academicSemesterSearchableFields.map(field => ({
+        [field]: {
+          $regex: searchTerm,
+          $options: 'i',
+        },
+      })),
+    })
+  }
+  if (Object.keys(filterData).length > 0) {
+    andCondition.push({
+      $and: Object.entries(filterData).map(([field, value]) => ({
+        [field]: value,
+      })),
+    })
+  }
+
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelper.calculatePagination(pagination)
+
+  const sortConditions: { [key: string]: SortOrder } = {}
+  if (sortBy && sortOrder) {
+    sortConditions[sortBy] = sortOrder
+  }
+  const whereCondition = andCondition.length > 0 ? { $and: andCondition } : {}
+  const result = await AcademicSemester.find(whereCondition)
+    .sort(sortConditions)
+    .skip(skip)
+    .limit(limit)
   const total = await AcademicSemester.count()
   return {
     meta: {
@@ -29,8 +70,14 @@ const getSemesters = async (pagination: IPaginationOptions) => {
     data: result,
   }
 }
-
+const getSingleSemester = async (
+  id: string,
+): Promise<IAcademicSemester | null> => {
+  const result = await AcademicSemester.findById(id)
+  return result
+}
 export const academicSemesterService = {
   createSemester,
   getSemesters,
+  getSingleSemester,
 }

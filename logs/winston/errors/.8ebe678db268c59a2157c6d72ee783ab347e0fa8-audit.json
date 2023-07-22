@@ -39,6 +39,31 @@
             "date": 1690009333393,
             "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-22-07-13-error.log",
             "hash": "857a74cd443d9343ecbe1a2ce1d307df073999a6448465e074f0b88a275563c8"
+        },
+        {
+            "date": 1690030827431,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-22-07-19-error.log",
+            "hash": "400605830eebef3f5fd1d6b6c657b22afca8d81cf7fd4f45b4eb10f95e5593ee"
+        },
+        {
+            "date": 1690034819803,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-22-07-20-error.log",
+            "hash": "b764872258953b9e3020c5f0c2d21e244b6268f9e72b5f6223ebc2822f7d5c0b"
+        },
+        {
+            "date": 1690038009628,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-22-07-21-error.log",
+            "hash": "c3c36c42e1014f348a9a4fb5782e3dc659b6fdef63b9aae699273af2910419fc"
+        },
+        {
+            "date": 1690041679661,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-22-07-22-error.log",
+            "hash": "c43a14218c04c6c75a9c296b0132f8b58769cc7bf8e627985b96c832d52f94aa"
+        },
+        {
+            "date": 1690045267373,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-22-07-23-error.log",
+            "hash": "21e4b9dfcfd01944538da5f81bde10c73a44c9b23a6f7734adfaeb41a431179e"
         }
     ],
     "hashType": "sha256"
