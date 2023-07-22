@@ -24,6 +24,31 @@
             "date": 1689962576231,
             "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\errors\\um-2023-22-07-00-error.log",
             "hash": "08b266b3c948ee20bdb255fb27596c835213d70397e6ba747df6adde283562d3"
+        },
+        {
+            "date": 1690012670235,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\errors\\um-2023-22-07-13-error.log",
+            "hash": "2e53be0a8cb667a58fd8fc83c6c289a22179897714df3d632cc7b19bec3d33b9"
+        },
+        {
+            "date": 1690017226992,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\errors\\um-2023-22-07-15-error.log",
+            "hash": "55ad24d8bcfb54ea8a2357a8eb81b63aa9baf020d5a09d61aec9f890339ed077"
+        },
+        {
+            "date": 1690020099857,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\errors\\um-2023-22-07-16-error.log",
+            "hash": "9204b957fb8004f4e226cc3764a3fa2cad86afb8728474f887c9781fba3c9292"
+        },
+        {
+            "date": 1690024167785,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\errors\\um-2023-22-07-17-error.log",
+            "hash": "08f0fa36891c1be67918193a96d4366d7f165a5e159af516f77b30863daecef2"
+        },
+        {
+            "date": 1690027848140,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\errors\\um-2023-22-07-18-error.log",
+            "hash": "25bb5bd4b77b715f1a02f2389ea720076ecab31e4f6d813bae198785c1081e26"
         }
     ],
     "hashType": "sha256"
