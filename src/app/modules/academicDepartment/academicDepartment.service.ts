@@ -12,7 +12,9 @@ import { AcademicDepartment } from './academicDepartment.model'
 const createDepartment = async (
   data: IAcademicDepartment,
 ): Promise<IAcademicDepartment | null> => {
-  const result = await AcademicDepartment.create(data)
+  const result = (await AcademicDepartment.create(data)).populate(
+    'academicFaculty',
+  )
 
   return result
 }
@@ -50,6 +52,7 @@ const getDepartments = async (
   }
   const whereCondition = andCondition.length > 0 ? { $and: andCondition } : {}
   const result = await AcademicDepartment.find(whereCondition)
+    .populate('academicFaculty')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit)

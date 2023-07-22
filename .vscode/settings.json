@@ -4,7 +4,8 @@
     "middlewares",
     "Parens",
     "Pewds",
-    "tsbuildinfo"
+    "tsbuildinfo",
+    "virtuals"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
