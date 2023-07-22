@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["Parens", "Pewds", "tsbuildinfo"],
+  "cSpell.words": [
+    "httpstatus",
+    "middlewares",
+    "Parens",
+    "Pewds",
+    "tsbuildinfo",
+    "virtuals"
+  ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.organizeImports": true
