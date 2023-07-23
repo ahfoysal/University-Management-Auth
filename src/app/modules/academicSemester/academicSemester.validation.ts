@@ -62,7 +62,7 @@ const updateAcademicSemesterZodSchema = z
       message: 'Title and code both are required',
     },
   )
-export const academicSemesterValidation = {
+export const AcademicSemesterValidation = {
   createAcademicSemesterZodSchema,
   updateAcademicSemesterZodSchema,
 }

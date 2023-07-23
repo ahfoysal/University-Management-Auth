@@ -64,6 +64,41 @@
             "date": 1690045267373,
             "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-22-07-23-error.log",
             "hash": "21e4b9dfcfd01944538da5f81bde10c73a44c9b23a6f7734adfaeb41a431179e"
+        },
+        {
+            "date": 1690093975489,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-23-07-12-error.log",
+            "hash": "fb333bb572265eb782b958b2c4b1602ab5aaa0b445682e6d40df3a0ee37d9e07"
+        },
+        {
+            "date": 1690095642581,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-23-07-13-error.log",
+            "hash": "ae87cd527e0d4f5ed28715b9dc346150f3b4e420086ff36e72ca6dea9c26c426"
+        },
+        {
+            "date": 1690099217904,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-23-07-14-error.log",
+            "hash": "fbf44b30f954362cb4fbdbf264da615b494ed2cb5bb624bd7d02f24f6760631a"
+        },
+        {
+            "date": 1690116582557,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-23-07-18-error.log",
+            "hash": "2574599e16c561a8fb70d17687006714c260a4a0033825c78f556138cd44bbc4"
+        },
+        {
+            "date": 1690117627089,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-23-07-19-error.log",
+            "hash": "ba265ec909c0921479156b645082af5bb664a76e66620eab298e73f37e5453b3"
+        },
+        {
+            "date": 1690121080801,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-23-07-20-error.log",
+            "hash": "a3135b058dd05ffe032e9caf5d3739bc9a767a9420a15ec2788f603547e2cdcf"
+        },
+        {
+            "date": 1690124912425,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-23-07-21-error.log",
+            "hash": "7135d5f00f0f4d82983cf375338576c02b2130f3ec38b6a3a84e868d0a42dde8"
         }
     ],
     "hashType": "sha256"
