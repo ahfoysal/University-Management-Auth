@@ -19,11 +19,11 @@ const createStudent = async (
   student: IStudent,
   user: IUser,
 ): Promise<IUser | null> => {
-  // If password is not given,set default password
   if (!user.password) {
     user.password = config.default_student_password as string
   }
-  // set role
+  // Hashed password
+
   user.role = 'student'
 
   const academicsemester = await AcademicSemester.findById(
@@ -34,20 +34,16 @@ const createStudent = async (
   const session = await mongoose.startSession()
   try {
     session.startTransaction()
-    // generate student id
     const id = await generatedStudentId(academicsemester as IAcademicSemester)
-    // set custom id into both  student & user
     user.id = id
     student.id = id
 
-    // Create student using
     const newStudent = await Student.create([student], { session })
 
     if (!newStudent.length) {
       throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create student')
     }
 
-    // set student _id (reference) into user.student
     user.student = newStudent[0]._id
 
     const newUser = await User.create([user], { session })
