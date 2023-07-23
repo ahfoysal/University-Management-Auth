@@ -2,12 +2,21 @@ import config from '../../../config'
 import ApiError from '../../../errors/ApiError'
 import { IUser } from './user.interface'
 import { User } from './user.model'
-import { generatedUserId } from './user.utils'
+import { generatedFacultyId, generatedStudentId } from './user.utils'
 
 const createUser = async (user: IUser): Promise<IUser | null> => {
   //  Auto generated  incremental id
-  const id = await generatedUserId()
-  user.id = id
+  const sems = {
+    year: '2036',
+    code: '02',
+  }
+  if (user.role === 'student') {
+    const id = await generatedStudentId(sems)
+    user.id = id
+  } else if (user.role === 'faculty') {
+    const faculty = await generatedFacultyId(sems)
+    user.id = faculty
+  }
   if (!user.password) {
     user.password = config.default_user_password as string
   }
