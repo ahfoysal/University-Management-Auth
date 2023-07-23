@@ -1,0 +1,2 @@
+ Unhandled Rejection, Server is closing Attempted illegal state transition from [TRANSACTION_ABORTED] to [TRANSACTION_COMMITTED] | [Error] [error] Mon Jul 24 2023 4:13:41  
+ Unhandled Rejection, Server is closing Attempted illegal state transition from [TRANSACTION_ABORTED] to [TRANSACTION_COMMITTED] | [Error] [error] Mon Jul 24 2023 4:13:46  

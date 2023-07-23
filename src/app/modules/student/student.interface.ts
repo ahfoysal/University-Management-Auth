@@ -5,8 +5,8 @@ import { IAcademicSemester } from '../academicSemester/academicSemester.interfac
 
 export type UserName = {
   firstName: string
-  lastName: string
   middleName: string
+  lastName: string
 }
 
 export type Guardian = {
