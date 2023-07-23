@@ -81,7 +81,7 @@ const updateFaculty = async (
 const deleteFaculty = async (id: string): Promise<void> => {
   await AcademicFaculty.deleteOne({ _id: id })
 }
-export const academicFacultyService = {
+export const AcademicFacultyService = {
   createFaculty,
   getFaculty,
   getSingleFaculty,

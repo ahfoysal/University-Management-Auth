@@ -2,27 +2,19 @@ import { SortOrder } from 'mongoose'
 import { paginationHelper } from '../../../helpers/paginationHelper'
 import { IGenericResponse } from '../../../interfaces/common'
 import { IPaginationOptions } from '../../../interfaces/pagination'
-import { academicFacultySearchableFields } from './student.constant'
-import { IAcademicFaculty, IAcademicFacultyFilters } from './student.interface'
-import { AcademicFaculty } from './student.model'
+import { studentSearchableFields } from './student.constant'
+import { IStudent, IStudentFilters } from './student.interface'
+import { Student } from './student.model'
 
-const createFaculty = async (
-  data: IAcademicFaculty,
-): Promise<IAcademicFaculty | null> => {
-  const result = await AcademicFaculty.create(data)
-
-  return result
-}
-
-const getFaculty = async (
-  filters: IAcademicFacultyFilters,
+const getStudents = async (
+  filters: IStudentFilters,
   pagination: IPaginationOptions,
-): Promise<IGenericResponse<IAcademicFaculty[]>> => {
+): Promise<IGenericResponse<IStudent[]>> => {
   const { searchTerm, ...filterData } = filters
   const andCondition = []
   if (searchTerm) {
     andCondition.push({
-      $or: academicFacultySearchableFields.map(field => ({
+      $or: studentSearchableFields.map(field => ({
         [field]: {
           $regex: searchTerm,
           $options: 'i',
@@ -46,11 +38,11 @@ const getFaculty = async (
     sortConditions[sortBy] = sortOrder
   }
   const whereCondition = andCondition.length > 0 ? { $and: andCondition } : {}
-  const result = await AcademicFaculty.find(whereCondition)
+  const result = await Student.find(whereCondition)
     .sort(sortConditions)
     .skip(skip)
     .limit(limit)
-  const total = await AcademicFaculty.count()
+  const total = await Student.count()
   return {
     meta: {
       page,
@@ -60,28 +52,25 @@ const getFaculty = async (
     data: result,
   }
 }
-const getSingleFaculty = async (
-  id: string,
-): Promise<IAcademicFaculty | null> => {
-  const result = await AcademicFaculty.findById(id)
+const getSingleStudent = async (id: string): Promise<IStudent | null> => {
+  const result = await Student.findById(id)
   return result
 }
-const updateFaculty = async (
+const updateStudents = async (
   id: string,
-  payload: Partial<IAcademicFaculty>,
-): Promise<IAcademicFaculty | null> => {
-  const result = await AcademicFaculty.findByIdAndUpdate({ _id: id }, payload, {
+  payload: Partial<IStudent>,
+): Promise<IStudent | null> => {
+  const result = await Student.findByIdAndUpdate({ _id: id }, payload, {
     new: true,
   })
   return result
 }
-const deleteFaculty = async (id: string): Promise<void> => {
-  await AcademicFaculty.deleteOne({ _id: id })
+const deleteStudent = async (id: string): Promise<void> => {
+  await Student.deleteOne({ _id: id })
 }
-export const academicFacultyService = {
-  createFaculty,
-  getFaculty,
-  getSingleFaculty,
-  updateFaculty,
-  deleteFaculty,
+export const StudentService = {
+  getStudents,
+  getSingleStudent,
+  updateStudents,
+  deleteStudent,
 }

@@ -6,11 +6,11 @@ import sendResponse from '../../../shared/sendResponse'
 import { paginationFields } from '../../constants/pagination'
 import { academicSemesterFilterableFields } from './academicSemester.constant'
 import { IAcademicSemester } from './academicSemester.interface'
-import { academicSemesterService } from './academicSemester.service'
+import { AcademicSemesterService } from './academicSemester.service'
 
 const createSemester = catchAsync(async (req: Request, res: Response) => {
   const { ...data } = req.body
-  const result = await academicSemesterService.createSemester(data)
+  const result = await AcademicSemesterService.createSemester(data)
 
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpstatus.OK,
@@ -22,7 +22,7 @@ const createSemester = catchAsync(async (req: Request, res: Response) => {
 const getSemesters = catchAsync(async (req: Request, res: Response) => {
   const paginationOptions = pick(req.query, paginationFields)
   const filters = pick(req.query, academicSemesterFilterableFields)
-  const result = await academicSemesterService.getSemesters(
+  const result = await AcademicSemesterService.getSemesters(
     filters,
     paginationOptions,
   )
@@ -37,7 +37,7 @@ const getSemesters = catchAsync(async (req: Request, res: Response) => {
 })
 const getSingleSemester = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params
-  const result = await academicSemesterService.getSingleSemester(id)
+  const result = await AcademicSemesterService.getSingleSemester(id)
 
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpstatus.OK,
@@ -49,7 +49,7 @@ const getSingleSemester = catchAsync(async (req: Request, res: Response) => {
 const updateSemester = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params
   const { ...data } = req.body
-  const result = await academicSemesterService.updateSemester(id, data)
+  const result = await AcademicSemesterService.updateSemester(id, data)
 
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpstatus.OK,
@@ -61,7 +61,7 @@ const updateSemester = catchAsync(async (req: Request, res: Response) => {
 const deleteSemester = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params
 
-  await academicSemesterService.deleteSemester(id)
+  await AcademicSemesterService.deleteSemester(id)
 
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpstatus.OK,
@@ -71,7 +71,7 @@ const deleteSemester = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
-export const academicSemesterController = {
+export const AcademicSemesterController = {
   createSemester,
   getSemesters,
   getSingleSemester,

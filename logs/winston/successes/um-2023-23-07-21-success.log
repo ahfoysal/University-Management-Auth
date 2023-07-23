@@ -1,0 +1,17 @@
+ failed to connect database querySrv ECONNREFUSED _mongodb._tcp.cluster0.vjnacj0.mongodb.net | [Success] [error] Sun Jul 23 2023 21:8:32  
+ failed to connect database querySrv ETIMEOUT _mongodb._tcp.cluster0.vjnacj0.mongodb.net | [Success] [error] Sun Jul 23 2023 21:10:24  
+ MongoDB Connected | [Success] [info] Sun Jul 23 2023 21:10:52  
+ Server listening on port 5000 | [Success] [info] Sun Jul 23 2023 21:10:52  
+ failed to connect database querySrv ETIMEOUT _mongodb._tcp.cluster0.vjnacj0.mongodb.net | [Success] [error] Sun Jul 23 2023 21:31:49  
+ MongoDB Connected | [Success] [info] Sun Jul 23 2023 21:32:19  
+ Server listening on port 5000 | [Success] [info] Sun Jul 23 2023 21:32:19  
+ MongoDB Connected | [Success] [info] Sun Jul 23 2023 21:34:35  
+ Server listening on port 5000 | [Success] [info] Sun Jul 23 2023 21:34:35  
+ MongoDB Connected | [Success] [info] Sun Jul 23 2023 21:35:2  
+ Server listening on port 5000 | [Success] [info] Sun Jul 23 2023 21:35:2  
+ MongoDB Connected | [Success] [info] Sun Jul 23 2023 21:35:8  
+ Server listening on port 5000 | [Success] [info] Sun Jul 23 2023 21:35:8  
+ failed to connect database querySrv ETIMEOUT _mongodb._tcp.cluster0.vjnacj0.mongodb.net | [Success] [error] Sun Jul 23 2023 21:36:47  
+ MongoDB Connected | [Success] [info] Sun Jul 23 2023 21:38:48  
+ Server listening on port 5000 | [Success] [info] Sun Jul 23 2023 21:38:48  
+ failed to connect database connect ECONNREFUSED 13.235.250.173:27017 | [Success] [error] Sun Jul 23 2023 21:47:6  

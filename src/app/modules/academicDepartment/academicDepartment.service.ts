@@ -88,7 +88,7 @@ const updateDepartment = async (
 const deleteDepartment = async (id: string): Promise<void> => {
   await AcademicDepartment.deleteOne({ _id: id })
 }
-export const academicDepartmentService = {
+export const AcademicDepartmentService = {
   createDepartment,
   getDepartments,
   getSingleDepartment,

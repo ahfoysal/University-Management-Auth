@@ -97,7 +97,7 @@ const updateSemester = async (
 const deleteSemester = async (id: string): Promise<void> => {
   await AcademicSemester.deleteOne({ _id: id })
 }
-export const academicSemesterService = {
+export const AcademicSemesterService = {
   createSemester,
   getSemesters,
   getSingleSemester,

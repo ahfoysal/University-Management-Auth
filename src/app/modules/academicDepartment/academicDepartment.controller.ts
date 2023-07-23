@@ -6,11 +6,11 @@ import sendResponse from '../../../shared/sendResponse'
 import { paginationFields } from '../../constants/pagination'
 import { academicDepartmentFilterableFields } from './academicDepartment.constant'
 import { IAcademicDepartment } from './academicDepartment.interface'
-import { academicDepartmentService } from './academicDepartment.service'
+import { AcademicDepartmentService } from './academicDepartment.service'
 
 const createDepartment = catchAsync(async (req: Request, res: Response) => {
   const { ...data } = req.body
-  const result = await academicDepartmentService.createDepartment(data)
+  const result = await AcademicDepartmentService.createDepartment(data)
 
   sendResponse<IAcademicDepartment>(res, {
     statusCode: httpstatus.OK,
@@ -23,7 +23,7 @@ const getDepartments = catchAsync(async (req: Request, res: Response) => {
   const paginationOptions = pick(req.query, paginationFields)
   const filters = pick(req.query, academicDepartmentFilterableFields)
 
-  const result = await academicDepartmentService.getDepartments(
+  const result = await AcademicDepartmentService.getDepartments(
     filters,
     paginationOptions,
   )
@@ -38,7 +38,7 @@ const getDepartments = catchAsync(async (req: Request, res: Response) => {
 })
 const getSingleDepartment = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params
-  const result = await academicDepartmentService.getSingleDepartment(id)
+  const result = await AcademicDepartmentService.getSingleDepartment(id)
 
   sendResponse<IAcademicDepartment>(res, {
     statusCode: httpstatus.OK,
@@ -50,7 +50,7 @@ const getSingleDepartment = catchAsync(async (req: Request, res: Response) => {
 const updateDepartment = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params
   const { ...data } = req.body
-  const result = await academicDepartmentService.updateDepartment(id, data)
+  const result = await AcademicDepartmentService.updateDepartment(id, data)
 
   sendResponse<IAcademicDepartment>(res, {
     statusCode: httpstatus.OK,
@@ -62,7 +62,7 @@ const updateDepartment = catchAsync(async (req: Request, res: Response) => {
 const deleteDepartment = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params
 
-  await academicDepartmentService.deleteDepartment(id)
+  await AcademicDepartmentService.deleteDepartment(id)
 
   sendResponse<IAcademicDepartment>(res, {
     statusCode: httpstatus.OK,
@@ -72,7 +72,7 @@ const deleteDepartment = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
-export const academicDepartmentController = {
+export const AcademicDepartmentController = {
   createDepartment,
   getDepartments,
   getSingleDepartment,

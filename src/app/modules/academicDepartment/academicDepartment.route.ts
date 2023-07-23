@@ -1,23 +1,23 @@
 import express from 'express'
 import validateRequest from '../../middlewares/validateRequest'
-import { academicDepartmentController } from './academicDepartment.controller'
-import { academicDepartmentValidation } from './academicDepartment.validation'
+import { AcademicDepartmentController } from './academicDepartment.controller'
+import { AcademicDepartmentValidation } from './academicDepartment.validation'
 
 const router = express.Router()
 
 router.post(
   '/create-department',
-  validateRequest(academicDepartmentValidation.createDepartmentZodSchema),
-  academicDepartmentController.createDepartment,
+  validateRequest(AcademicDepartmentValidation.createDepartmentZodSchema),
+  AcademicDepartmentController.createDepartment,
 )
-router.get('/', academicDepartmentController.getDepartments)
-router.get('/:id', academicDepartmentController.getSingleDepartment)
+router.get('/', AcademicDepartmentController.getDepartments)
+router.get('/:id', AcademicDepartmentController.getSingleDepartment)
 
 router.patch(
   '/:id',
-  validateRequest(academicDepartmentValidation.updateDepartmentZodSchema),
-  academicDepartmentController.updateDepartment,
+  validateRequest(AcademicDepartmentValidation.updateDepartmentZodSchema),
+  AcademicDepartmentController.updateDepartment,
 )
-router.delete('/:id', academicDepartmentController.deleteDepartment)
+router.delete('/:id', AcademicDepartmentController.deleteDepartment)
 
-export const academicDepartmentRoutes = router
+export const AcademicDepartmentRoutes = router
