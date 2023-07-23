@@ -1,7 +1,6 @@
 import cors from 'cors'
 import express, { Application } from 'express'
 import globalErrorHandler from './app/middlewares/globalErrorHandlers'
-import { generatedFacultyId } from './app/modules/user/user.utils'
 import routes from './app/routes'
 
 const app: Application = express()
@@ -24,11 +23,5 @@ app.use(globalErrorHandler)
 //   // Promise.reject(new Error('Unhandled Promise Rejection'))
 //   // return res.send('Server Running')
 // })
-
-const test = async () => {
-  const testId = await generatedFacultyId()
-  console.log(testId)
-}
-// test()
 
 export default app
