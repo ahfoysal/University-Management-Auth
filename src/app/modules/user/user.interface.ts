@@ -1,4 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { Model, Types } from 'mongoose'
+import { IAdmin } from '../admin/admin.interface'
+import { IFaculty } from '../faculty/faculty.interface'
 import { IStudent } from '../student/student.interface'
 
 export type IUser = {
@@ -10,13 +13,9 @@ export type IUser = {
   faculty: Types.ObjectId | IFaculty
   needPasswordChange: true | false
 }
-export type IAdmin = {
-  id: string
-  role: string
-  password: string
-}
-export type IFaculty = {
-  id: string
+export type IUserMethods = {
+  isUserExist(id: string): Promise<Partial<IUser> | null>
+  isPasswordMatched(givenPassword: string, password: string): Promise<boolean>
 }
 
-export type UserModel = Model<IUser, Record<string, unknown>>
+export type UserModel = Model<IUser, Record<string, unknown>, IUserMethods>

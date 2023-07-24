@@ -1,8 +1,9 @@
 import bcrypt from 'bcrypt'
 import { Schema, model } from 'mongoose'
 import config from '../../../config'
-import { IUser, UserModel } from './user.interface'
-const UserSchema = new Schema<IUser>(
+import { IUser, IUserMethods, UserModel } from './user.interface'
+
+const UserSchema = new Schema<IUser, Record<string, never>, IUserMethods>(
   {
     id: { type: String, required: true, unique: true },
     role: { type: String, required: true },
@@ -28,6 +29,21 @@ const UserSchema = new Schema<IUser>(
     timestamps: true,
   },
 )
+UserSchema.methods.isUserExist = async function (
+  id: string,
+): Promise<Pick<IUser, 'id' | 'role' | 'needPasswordChange'> | null> {
+  return await User.findOne(
+    { id: id },
+    { id: 1, needPasswordChange: 1, password: 1, role: 1 },
+  )
+}
+UserSchema.methods.isPasswordMatched = async function (
+  givenPassword: string,
+  password: string,
+): Promise<boolean> {
+  return await bcrypt.compare(givenPassword, password)
+}
+
 UserSchema.pre('save', async function (next) {
   // Hashing
   const rounds = Number(config.bcrypt_salt_rounds)

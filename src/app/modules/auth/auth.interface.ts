@@ -2,5 +2,8 @@ export type ILoginUser = {
   id: string
   password: string
 }
-
-export type ILoggedInUser = {}
+export type ILoginUserResponse = {
+  accessToken: string
+  refreshToken?: string
+  needPasswordChange: boolean | undefined
+}
