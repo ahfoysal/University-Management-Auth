@@ -99,6 +99,16 @@
             "date": 1690124912425,
             "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-23-07-21-error.log",
             "hash": "7135d5f00f0f4d82983cf375338576c02b2130f3ec38b6a3a84e868d0a42dde8"
+        },
+        {
+            "date": 1690179921004,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-24-07-12-error.log",
+            "hash": "442a8318bf8fef77a83f47b82c878b5704184d71c4b865981d49a56b2c68500f"
+        },
+        {
+            "date": 1690182003437,
+            "name": "C:\\Users\\foysal\\Desktop\\um\\University-Management-Auth\\logs\\winston\\errors\\um-2023-24-07-13-error.log",
+            "hash": "27d1b1e5fd7a3950fad98df4f64bbdffe588393136c28309345eae9fcc978272"
         }
     ],
     "hashType": "sha256"
