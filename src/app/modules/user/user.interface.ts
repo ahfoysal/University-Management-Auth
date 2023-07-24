@@ -8,6 +8,7 @@ export type IUser = {
   student?: Types.ObjectId | IStudent
   admin?: Types.ObjectId | IAdmin
   faculty: Types.ObjectId | IFaculty
+  needPasswordChange: true | false
 }
 export type IAdmin = {
   id: string
