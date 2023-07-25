@@ -1,54 +1,75 @@
+/* eslint-disable @typescript-eslint/no-this-alias */
 import bcrypt from 'bcrypt'
 import { Schema, model } from 'mongoose'
 import config from '../../../config'
-import { IUser, IUserMethods, UserModel } from './user.interface'
+import { IUser, UserModel } from './user.interface'
 
-const UserSchema = new Schema<IUser, Record<string, never>, IUserMethods>(
+const UserSchema = new Schema<IUser, UserModel>(
   {
-    id: { type: String, required: true, unique: true },
-    role: { type: String, required: true },
-    password: { type: String, required: true, select: 0 },
+    id: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    role: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      select: 0,
+    },
+    needsPasswordChange: {
+      type: Boolean,
+      default: true,
+    },
     student: {
       type: Schema.Types.ObjectId,
       ref: 'Student',
-      required: false,
     },
     faculty: {
       type: Schema.Types.ObjectId,
       ref: 'Faculty',
-      required: false,
     },
-    needPasswordChange: { type: Boolean, default: true },
     admin: {
       type: Schema.Types.ObjectId,
       ref: 'Admin',
-      required: false,
     },
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
   },
 )
-UserSchema.methods.isUserExist = async function (
+
+UserSchema.statics.isUserExist = async function (
   id: string,
-): Promise<Pick<IUser, 'id' | 'role' | 'needPasswordChange'> | null> {
+): Promise<IUser | null> {
   return await User.findOne(
-    { id: id },
-    { id: 1, needPasswordChange: 1, password: 1, role: 1 },
+    { id },
+    { id: 1, password: 1, role: 1, needsPasswordChange: 1 },
   )
 }
-UserSchema.methods.isPasswordMatched = async function (
+
+UserSchema.statics.isPasswordMatched = async function (
   givenPassword: string,
-  password: string,
+  savedPassword: string,
 ): Promise<boolean> {
-  return await bcrypt.compare(givenPassword, password)
+  return await bcrypt.compare(givenPassword, savedPassword)
 }
 
+// User.create() / user.save()
 UserSchema.pre('save', async function (next) {
-  // Hashing
-  const rounds = Number(config.bcrypt_salt_rounds)
+  // hashing user password
+  const user = this
+  user.password = await bcrypt.hash(
+    user.password,
+    Number(config.bcrypt_salt_rounds),
+  )
 
-  this.password = await bcrypt.hash(this.password, rounds)
   next()
 })
 

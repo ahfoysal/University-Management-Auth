@@ -8,14 +8,18 @@ export type IUser = {
   id: string
   role: string
   password: string
+  needsPasswordChange: boolean
   student?: Types.ObjectId | IStudent
+  faculty?: Types.ObjectId | IFaculty
   admin?: Types.ObjectId | IAdmin
-  faculty: Types.ObjectId | IFaculty
-  needPasswordChange: true | false
-}
-export type IUserMethods = {
-  isUserExist(id: string): Promise<Partial<IUser> | null>
-  isPasswordMatched(givenPassword: string, password: string): Promise<boolean>
 }
 
-export type UserModel = Model<IUser, Record<string, unknown>, IUserMethods>
+export type UserModel = {
+  isUserExist(
+    id: string,
+  ): Promise<Pick<IUser, 'id' | 'password' | 'role' | 'needsPasswordChange'>>
+  isPasswordMatched(
+    givenPassword: string,
+    savedPassword: string,
+  ): Promise<boolean>
+} & Model<IUser>
