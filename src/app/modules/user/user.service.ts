@@ -7,13 +7,15 @@ import { AcademicSemester } from '../academicSemester/academicSemester.model'
 import { Faculty } from '../faculty/faculty.model'
 import { IStudent } from '../student/student.interface'
 import { Student } from '../student/student.model'
-import { IAdmin, IFaculty, IUser } from './user.interface'
+import { IUser } from './user.interface'
 import { User } from './user.model'
 import {
   generatedAdminId,
   generatedFacultyId,
   generatedStudentId,
 } from './user.utils'
+import { IFaculty } from '../faculty/faculty.interface'
+import { IAdmin } from '../admin/admin.interface'
 
 const createStudent = async (
   student: IStudent,
