@@ -53,7 +53,28 @@ const refreshToken = (token) => __awaiter(void 0, void 0, void 0, function* () {
     const accessToken = jwtHelper_1.jwtHelpers.generateToken({ id: id, role: isUserExist.role }, config_1.default.jwt.secret, config_1.default.jwt.expires_in);
     return { accessToken };
 });
+const changePassword = (user, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const { oldPassword, newPassword } = payload;
+    // // checking is user exist
+    // const isUserExist = await User.isUserExist(user?.userId);
+    //alternative way
+    const isUserExist = yield user_model_1.User.findOne({ id: user === null || user === void 0 ? void 0 : user.id }).select('+password');
+    if (!isUserExist) {
+        throw new ApiError_1.default(http_status_1.default.NOT_FOUND, 'User does not exist');
+    }
+    // checking old password
+    if (isUserExist.password &&
+        !(yield user_model_1.User.isPasswordMatched(oldPassword, isUserExist.password))) {
+        throw new ApiError_1.default(http_status_1.default.UNAUTHORIZED, 'Old Password is incorrect');
+    }
+    // data update
+    isUserExist.password = newPassword;
+    isUserExist.needsPasswordChange = false;
+    // updating using save()
+    isUserExist.save();
+});
 exports.AuthService = {
     login,
     refreshToken,
+    changePassword,
 };

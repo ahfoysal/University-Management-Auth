@@ -74,9 +74,7 @@ const changePassword = async (
   // const isUserExist = await User.isUserExist(user?.userId);
 
   //alternative way
-  const isUserExist = await User.findOne({ id: user?.userId }).select(
-    '+password',
-  )
+  const isUserExist = await User.findOne({ id: user?.id }).select('+password')
 
   if (!isUserExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist')
@@ -90,20 +88,6 @@ const changePassword = async (
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Old Password is incorrect')
   }
 
-  // // hash password before saving
-  // const newHashedPassword = await bcrypt.hash(
-  //   newPassword,
-  //   Number(config.bycrypt_salt_rounds)
-  // );
-
-  // const query = { id: user?.userId };
-  // const updatedData = {
-  //   password: newHashedPassword,  //
-  //   needsPasswordChange: false,
-  //   passwordChangedAt: new Date(), //
-  // };
-
-  // await User.findOneAndUpdate(query, updatedData);
   // data update
   isUserExist.password = newPassword
   isUserExist.needsPasswordChange = false
