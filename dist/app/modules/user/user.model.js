@@ -36,6 +36,9 @@ const UserSchema = new mongoose_1.Schema({
         type: Boolean,
         default: true,
     },
+    passwordChangedAt: {
+        type: Date,
+    },
     student: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: 'Student',
@@ -70,6 +73,9 @@ UserSchema.pre('save', function (next) {
         // hashing user password
         const user = this;
         user.password = yield bcrypt_1.default.hash(user.password, Number(config_1.default.bcrypt_salt_rounds));
+        if (!user.needsPasswordChange) {
+            user.passwordChangedAt = new Date();
+        }
         next();
     });
 });
