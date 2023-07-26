@@ -109,6 +109,31 @@
             "date": 1690149784680,
             "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\successes\\um-2023-24-07-04-success.log",
             "hash": "9dab01d0955b3f378abc64f2bf8e6ac719f9fff86ec760c3250d096f0ce95e71"
+        },
+        {
+            "date": 1690219157821,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\successes\\um-2023-24-07-23-success.log",
+            "hash": "a31e46c90ca779ebfceeae4b5a6ff891cdc42d59ee5f60b6e99fa3d384e633bb"
+        },
+        {
+            "date": 1690221614336,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\successes\\um-2023-25-07-00-success.log",
+            "hash": "b775e8ccd5da0cb6787a2fea256704a5bb95ebfb9009cc11fca557a1c9b5d73b"
+        },
+        {
+            "date": 1690397570392,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\successes\\um-2023-27-07-00-success.log",
+            "hash": "91d32d5afd8a0830c8e5351716bbcdf32fcfd0f215480c5833643ab0e15af918"
+        },
+        {
+            "date": 1690399316080,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\successes\\um-2023-27-07-01-success.log",
+            "hash": "d87670e1fa90641d814c52c032fc16d9c74b02becef334647ec1de860d1aefae"
+        },
+        {
+            "date": 1690401657934,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\successes\\um-2023-27-07-02-success.log",
+            "hash": "be9b6604ea5883e1918a892ac4e57979175d149e5850ebed372011184fe7bcef"
         }
     ],
     "hashType": "sha256"

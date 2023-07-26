@@ -2,15 +2,18 @@ import cors from 'cors'
 import express, { Application } from 'express'
 import globalErrorHandler from './app/middlewares/globalErrorHandlers'
 import routes from './app/routes'
+import cookieParser from 'cookie-parser'
 
 const app: Application = express()
 
 ///cors
+
 app.use(cors())
 
-///body parser
+///body and cookie parser
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
 ////////
 app.use('/api/v1', routes)
 app.use(globalErrorHandler)
