@@ -26,6 +26,7 @@ const getFaculty = catchAsync(async (req: Request, res: Response) => {
     filters,
     paginationOptions,
   )
+  console.log(req.user)
 
   sendResponse<IAcademicFaculty[]>(res, {
     statusCode: httpstatus.OK,

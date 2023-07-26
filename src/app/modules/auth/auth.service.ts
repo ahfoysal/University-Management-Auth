@@ -51,7 +51,6 @@ const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
     throw new ApiError(httpStatus.FORBIDDEN, 'Invalid Refresh Token')
   }
   const { id } = decodedToken
-  console.log(decodedToken)
   const isUserExist = await User.isUserExist(id)
   if (!isUserExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist')
