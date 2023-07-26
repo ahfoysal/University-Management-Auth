@@ -134,6 +134,11 @@
             "date": 1690401657934,
             "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\successes\\um-2023-27-07-02-success.log",
             "hash": "be9b6604ea5883e1918a892ac4e57979175d149e5850ebed372011184fe7bcef"
+        },
+        {
+            "date": 1690405488743,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\successes\\um-2023-27-07-03-success.log",
+            "hash": "2aa12eb1f8928e60a08e34a297bd65aba02d2083b3f14d0c29c9ea810b3a48d3"
         }
     ],
     "hashType": "sha256"
