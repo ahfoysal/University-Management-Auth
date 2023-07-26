@@ -72,7 +72,9 @@ UserSchema.pre('save', async function (next) {
     user.password,
     Number(config.bcrypt_salt_rounds),
   )
-
+  if (!user.needsPasswordChange) {
+    user.passwordChangedAt = new Date()
+  }
   next()
 })
 

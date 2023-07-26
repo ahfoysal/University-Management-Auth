@@ -67,18 +67,6 @@ const changePassword = (user, payload) => __awaiter(void 0, void 0, void 0, func
         !(yield user_model_1.User.isPasswordMatched(oldPassword, isUserExist.password))) {
         throw new ApiError_1.default(http_status_1.default.UNAUTHORIZED, 'Old Password is incorrect');
     }
-    // // hash password before saving
-    // const newHashedPassword = await bcrypt.hash(
-    //   newPassword,
-    //   Number(config.bycrypt_salt_rounds)
-    // );
-    // const query = { id: user?.userId };
-    // const updatedData = {
-    //   password: newHashedPassword,  //
-    //   needsPasswordChange: false,
-    //   passwordChangedAt: new Date(), //
-    // };
-    // await User.findOneAndUpdate(query, updatedData);
     // data update
     isUserExist.password = newPassword;
     isUserExist.needsPasswordChange = false;
