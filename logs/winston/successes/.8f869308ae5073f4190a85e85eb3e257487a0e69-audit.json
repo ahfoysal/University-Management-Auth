@@ -119,6 +119,16 @@
             "date": 1690221614336,
             "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\successes\\um-2023-25-07-00-success.log",
             "hash": "b775e8ccd5da0cb6787a2fea256704a5bb95ebfb9009cc11fca557a1c9b5d73b"
+        },
+        {
+            "date": 1690397570392,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\successes\\um-2023-27-07-00-success.log",
+            "hash": "91d32d5afd8a0830c8e5351716bbcdf32fcfd0f215480c5833643ab0e15af918"
+        },
+        {
+            "date": 1690399316080,
+            "name": "D:\\FullStack\\University Management\\Um-auth\\logs\\winston\\successes\\um-2023-27-07-01-success.log",
+            "hash": "d87670e1fa90641d814c52c032fc16d9c74b02becef334647ec1de860d1aefae"
         }
     ],
     "hashType": "sha256"

@@ -4,7 +4,7 @@ import httpStatus from 'http-status'
 import config from '../../../config'
 import catchAsync from '../../../shared/catchAsync'
 import sendResponse from '../../../shared/sendResponse'
-import { ILoginUserResponse } from './auth.interface'
+import { ILoginUserResponse, IRefreshTokenResponse } from './auth.interface'
 import { AuthService } from './auth.service'
 
 const login: RequestHandler = catchAsync(
@@ -36,7 +36,7 @@ const refreshToken: RequestHandler = catchAsync(
       httpOnly: true,
     }
     res.cookie('refreshToken', refreshToken, cookieOptions)
-    sendResponse(res, {
+    sendResponse<IRefreshTokenResponse>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'Access token retrieved successfully!',

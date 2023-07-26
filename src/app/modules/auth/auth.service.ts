@@ -1,10 +1,14 @@
 import httpStatus from 'http-status'
-import jwt, { Secret } from 'jsonwebtoken'
+import { Secret } from 'jsonwebtoken'
 import config from '../../../config'
 import ApiError from '../../../errors/ApiError'
 import { jwtHelpers } from '../../../helpers/jwtHelper'
 import { User } from '../user/user.model'
-import { ILoginUser, ILoginUserResponse } from './auth.interface'
+import {
+  ILoginUser,
+  ILoginUserResponse,
+  IRefreshTokenResponse,
+} from './auth.interface'
 
 const login = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   const { id, password } = payload
@@ -38,15 +42,15 @@ const login = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   return { accessToken, refreshToken, needsPasswordChange }
 }
 
-const refreshToken = async (token: string) => {
+const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
   // verify the token
   let decodedToken = null
   try {
-    decodedToken = jwt.verify(token, config.jwt.refresh as Secret)
+    decodedToken = jwtHelpers.verifyToken(token, config.jwt.refresh as Secret)
   } catch (err) {
-    throw new ApiError(httpStatus.FORBIDDEN, 'Invalid refresh request')
+    throw new ApiError(httpStatus.FORBIDDEN, 'Invalid Refresh Token')
   }
-  const { id, role } = decodedToken
+  const { id } = decodedToken
   console.log(decodedToken)
   const isUserExist = await User.isUserExist(id)
   if (!isUserExist) {
@@ -54,11 +58,11 @@ const refreshToken = async (token: string) => {
   }
   // generate new access token
   const accessToken = jwtHelpers.generateToken(
-    { id: id, role },
+    { id: id, role: isUserExist.role },
     config.jwt.secret as Secret,
     config.jwt.expires_in as string,
   )
-  return accessToken
+  return { accessToken }
 }
 export const AuthService = {
   login,
