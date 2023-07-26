@@ -52,7 +52,7 @@ const changePassword = catchAsync(async (req: Request, res: Response) => {
   await AuthService.changePassword(user, passwordData)
 
   sendResponse(res, {
-    statusCode: 200,
+    statusCode: httpStatus.OK,
     success: true,
     message: 'Password changed successfully !',
   })
